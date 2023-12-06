@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+*{
+  font-family:  var(--pix-body-font),sans-serif;
+  color: rgb(24, 24, 24);
+
+}
+body {
+   width : 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image-placeholder{
+   width: 100px;
+   height: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: beige;
+   border: 1px solid grey;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* -----common css------ */
+
+.flex{
+   display:flex
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.grey{
+   color: gray;
 }
 
-.App-link {
-  color: #61dafb;
+.green{
+   color: rgb(15, 230, 37);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.price{
+   font-size: 20px;
 }
+
+.button{
+   width: 120px;
+   height: 35px;
+   justify-content: center;
+   align-items: center;
+   background-color: teal;
+   color: white;
+   border:none;
+   border-radius: 0px 5px 5px 0px;
+   cursor: pointer;
+}
+
+.cart{
+   border-radius:5px ;
+   margin: auto;
+   width: 100%;
+}
+
+input::placeholder {
+   padding: 10px;
+ }
+
+ .see-more{
+   color: teal;
+   font-size: 12px;
+   align-items: center;
+   float: right;
+ }
+
+ .home-body{
+   padding: 20px;
+ }
+
+ .d-none{
+   display: none;
+ }
+/* -------header------- */
+.header-wrap{
+   height: 50px;
+justify-content: space-between;
+}
+
+.header-left,.header-right{
+   width: 40%;
+   justify-content: space-evenly;
+   align-items: center;
+}
+
+.header-right{
+   width: 20%;
+}
+.header-left > img{
+width: 15%;
+}
+
+/* -------search-div------ */
+
+.search-wrap{
+   height: 100px;
+   background-color: rgb(233, 232, 232) ;
+   padding: 20px;
+}
+
+.search-bar{
+   width: 300px;
+   border-radius: 5px 0px 0px 5px;
+   border: none;
+}
+
+.search-result-wrap{
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(5,15%);
+   justify-content: center;
+   padding: 20px 0px 0px 0px;
+   gap: 20px;
+}
+
+.search-result-card{
+   width : 100%;
+   border:1px solid rgb(236, 235, 235);
+   padding: 3% 3%;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+
+}
+
+.display-name{
+   height: 32px;
+}
+
+.search-result-card > img{
+   width: 100%;
+   height: 200px;
+   border-radius: 8px;
+}
+
+.search-result-card p, .search-result-card div{
+   font-size: 11px;
+}
+
+.search-result-card div{
+   margin: 5px;
+}
+
