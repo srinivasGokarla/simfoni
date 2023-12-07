@@ -1,4 +1,3 @@
-
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
@@ -9,22 +8,20 @@ export const SET_PAGE = 'SET_PAGE';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
 
-
-// Define the Product and Category types
-interface Product {
-    manufacturer: any;
-    pricing: any;
-    leadImage: any;
-    name: string;
+export interface Product {
+  name: string;
+  leadImage: { id: string };
+  pricing: { customerPrice: { unitPrice: { value: number } } }; 
+  manufacturer: { name: string };
  
 }
 
 interface Category {
-  // Define your category type
+ 
 }
 interface FetchCategoriesSuccessAction {
     type: typeof FETCH_CATEGORIES_SUCCESS;
-    payload: any; // Adjust the payload type according to your data structure
+    payload: any; 
   }
 
 export type ActionTypes =
@@ -39,7 +36,7 @@ export type ActionTypes =
 
 interface SetProductsAction {
   type: typeof SET_PRODUCTS;
-  payload: Product[];
+  payload: any[];
 }
 
 export interface RootState {

@@ -1,12 +1,12 @@
-// ParentSharing.tsx
+
 import React from 'react';
-import  Categories  from '../Components/Categories';
-import  CatergoryProducts  from '../Components/CatergoryProducts';
+import  Categories  from './Categories';
+import  CategoryDetails  from './CatergoryDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState,setSelectedCategory } from '../redux/store';
 
 
-const ParentSharing: React.FC = () => {
+const Details: React.FC = () => {
   const dispatch = useDispatch();
   const selectedCategoryId = useSelector((state: RootState) => state.selectedCategoryId);
 
@@ -17,9 +17,9 @@ const ParentSharing: React.FC = () => {
   return (
     <div>
       <Categories onSelectCategory={handleSelectCategory} />
-      <CatergoryProducts categoryId={selectedCategoryId} />
+      <CategoryDetails categoryId={selectedCategoryId} />
     </div>
   );
 };
 
-export default ParentSharing;
+export default Details;

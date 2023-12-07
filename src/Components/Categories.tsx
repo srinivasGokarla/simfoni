@@ -1,20 +1,25 @@
-// Categories.tsx
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom'; 
-import { ActionTypes, FETCH_CATEGORIES_SUCCESS } from '../redux/ActionTypes';
-import { setCategories, setLoading, setProducts, setSearchResults, setSearchTerm, setSelectedCategory } from '../redux/store';  // Import actions directly
+
+import { FETCH_CATEGORIES_SUCCESS } from '../redux/ActionTypes';
+import {  setLoading,  setSelectedCategory } from '../redux/store';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+interface Category {
+  categoryId: string;
+  displayName: string;
+ 
+}
 interface CategoriesProps {
     onSelectCategory: (categoryId: string | null) => void;
   }
   const Categories: React.FC<CategoriesProps> = ({ onSelectCategory }) => {
   const dispatch = useDispatch();
-  const categories = useSelector((state: any) => state.categories);
+  const categories: Category[] = useSelector((state: any) => state.categories);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -24,7 +29,7 @@ interface CategoriesProps {
         url: 'https://wayfair.p.rapidapi.com/categories/list',
         params: { caid: '214970' },
         headers: {
-          'X-RapidAPI-Key': '94734f0ae6mshe175d77ec61599cp193ccbjsn3fdf6eb678ce',
+          'X-RapidAPI-Key': '584b5764admshb43673630f37666p197c98jsn5122825d9985',
           'X-RapidAPI-Host': 'wayfair.p.rapidapi.com',
         },
       };
@@ -43,12 +48,16 @@ interface CategoriesProps {
 
     getCategories();
   }, [dispatch]);
+  const handleSelectCategory = (categoryId: string | null) => {
+    dispatch(setSelectedCategory(categoryId));
+  };
+
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -56,13 +65,20 @@ interface CategoriesProps {
 
 return (
     <div>
-      <h2>Best Selling</h2>
+      <h2 className='sub-headings'>Best Selling</h2>
       <div>
         <Slider {...settings}>
-          {categories.map((category: any) => (
-            <div key={category.categoryId} onClick={() => onSelectCategory(category.categoryId)}>
-              <div className='image-placeholder'>
-                <p>{category.displayName}</p>
+        {categories.map((category : Category) => (
+            <div
+              className="category"
+              key={category.categoryId}
+              onClick={() => handleSelectCategory(category.categoryId)}
+            >
+              <div className="image flex">
+                <img
+                  src="https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                />
               </div>
               <p>{category.displayName}</p>
             </div>

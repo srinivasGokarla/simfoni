@@ -1,15 +1,13 @@
 // store.ts
 
-import { createStore, applyMiddleware, Middleware, MiddlewareAPI } from 'redux';
-import  thunk from 'redux-thunk';
-import { ActionTypes, SET_CATEGORIES, SET_PRODUCTS,SET_PAGE, FETCH_PRODUCTS_SUCCESS,SET_LOADING,SetSelectedCategoryAction, SetSearchTermAction, SetSearchResultsAction,SET_SELECTED_CATEGORY,SET_SEARCH_TERM,SET_SEARCH_RESULTS,FETCH_CATEGORIES_SUCCESS, } from './ActionTypes';
+import { createStore, applyMiddleware } from 'redux';
 
-interface Product {
- 
-}
+import { ActionTypes, SET_CATEGORIES, SET_PRODUCTS,SET_PAGE, FETCH_PRODUCTS_SUCCESS,SET_LOADING, SetSearchTermAction, SetSearchResultsAction,SET_SELECTED_CATEGORY,SET_SEARCH_TERM,SET_SEARCH_RESULTS,FETCH_CATEGORIES_SUCCESS, } from './ActionTypes';
+
+
 
 interface Category {
-  // Define your category type
+
 }
 
 interface State {
@@ -39,9 +37,17 @@ const initialState: State = {
   page : 1
   
 };
+export interface Product {
+  url: string;
+  name: string;
+  leadImage: { id: string };
+  pricing: { customerPrice: { unitPrice: { value: number } } };
+  manufacturer: { name: string };
+ 
+}
 
 
-export const setProducts = (products: Product[]) => ({
+export const setProducts = (products: any[]) => ({
     type: SET_PRODUCTS,
     payload: products,
   });
@@ -86,6 +92,9 @@ export const setPage = (page: number) => ({
   });
    export interface RootState {
     selectedCategoryId: string | null;
+    products: Product[];
+  loading: boolean;
+  page: number;
   }
   
  
@@ -123,10 +132,6 @@ const reducer = (state = initialState, action: ActionTypes): State => {
 
 export type SetProductsAction = ReturnType<typeof setProducts>;
 export type SetLoadingAction = ReturnType<typeof setLoading>;
-
-// const store = createStore(reducer, applyMiddleware());
-
-
 
 interface Dispatch {
   (action: ActionTypes): void;
